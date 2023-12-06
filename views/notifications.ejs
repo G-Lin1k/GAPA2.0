@@ -1,0 +1,285 @@
+<%- include("partials/head.ejs") %>
+
+<div class="container-fluid slide-in-forwards">
+    <div class="row">
+        <div class="col-3" style="background-color: #1536FF;">
+            <%- include("partials/sidebar.ejs") %>                                    
+        </div>
+        <div class="col-9 sliding-up">
+            <div class="row mt-4">
+                <div class="col-11">
+                    <%- include("partials/search_desktop.ejs") -%>
+                </div>
+                <div class="col-1">
+                    <a href="/user">
+                        <img src="image/desktop/user.png" alt="" class="user">
+                    </a>
+                </div>
+            </div>
+            <div class="div" id="cardContainer">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("partials/footer.ejs") %>
+
+<script>
+    // Define an array of card objects
+const cardObjects = [
+  {
+    class: "card mb-3 rounded-5 text-white",
+    style: "background-color: #333333;",
+    children: [
+      {
+        class: "row g-0",
+        children: [
+          { class: "col-1", children: [{ class: "circle_online" }] },
+          {
+            class: "col-1 align-self-center text-center",
+            children: [{ tag: "img", src: "/image/communities/Elipse_1.png", class: "img-fluid", alt: "..." }]
+          },
+          {
+            class: "col-7 align-items-center justify-content-center d-flex",
+            children: [
+              {
+                class: "card-body",
+                children: [
+                  { tag: "h5", class: "card-title fw-bolder", text: "Furniture Design Enthusiast" },
+                  { tag: "p", class: "card-text", text: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer." }
+                ]
+              }
+            ]
+          },
+          {
+            class: "col-3 justify-content-end text-end",
+            children: [
+              {
+                class: "col mt-2",
+                children: [
+                  { tag: "button", class: "btn btn-dark rounded-5 position-relative mt-1", children: [{ class: "ps-4", text: "Interior Design" }, { class: "circle_interior_design" }] },
+                  { tag: "button", class: "btn btn-dark rounded-5 position-relative mt-1", children: [{ class: "ps-4", text: "Product Design" }, { class: "circle_product_design" }] }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
+  //Architecture
+
+  {
+    class: "card mb-3 rounded-5 text-white",
+    style: "background-color: #333333;",
+    children: [
+      {
+        class: "row g-0",
+        children: [
+          { class: "col-1", children: [{ class: "circle_offline" }] },
+          {
+            class: "col-1 align-self-center text-center",
+            children: [{ tag: "img", src: "/image/communities/Elipse_2.png", class: "img-fluid", alt: "..." }]
+          },
+          {
+            class: "col-7 align-items-center justify-content-center d-flex",
+            children: [
+              {
+                class: "card-body",
+                children: [
+                  { tag: "h5", class: "card-title fw-bolder", text: "Architecture" },
+                  { tag: "p", class: "card-text", text: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer." }
+                ]
+              }
+            ]
+          },
+          {
+            class: "col-3 justify-content-end text-end mt-2",
+            children: [
+              {
+                class: "col",
+                children: [
+                  { tag: "button", class: "btn btn-dark rounded-5 position-relative mt-1", children: [{ class: "ps-4", text: "Architecture" }, { class: "circle_architecture" }] }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
+  //Graphic Design
+
+  {
+    class: "card mb-3 rounded-5 text-white",
+    style: "background-color: #333333;",
+    children: [
+      {
+        class: "row g-0",
+        children: [
+          { class: "col-1", children: [{ class: "circle_offline" }] },
+          {
+            class: "col-1 align-self-center text-center",
+            children: [{ tag: "img", src: "/image/communities/Elipse_3.png", class: "img-fluid", alt: "..." }]
+          },
+          {
+            class: "col-7 align-items-center justify-content-center d-flex",
+            children: [
+              {
+                class: "card-body",
+                children: [
+                  { tag: "h5", class: "card-title fw-bolder", text: "Graphic Design" },
+                  { tag: "p", class: "card-text", text: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer." }
+                ]
+              }
+            ]
+          },
+          {
+            class: "col-3 justify-content-end text-end",
+            children: [
+              {
+                class: "col mt-2",
+                children: [
+                  { tag: "button", class: "btn btn-dark rounded-5 position-relative mt-1", children: [{ class: "ps-4", text: "Graphic Design" }, { class: "circle_graphic_design" }] }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
+  //UI/UX Design Team
+
+  {
+    class: "card mb-3 rounded-5 text-white",
+    style: "background-color: #333333;",
+    children: [
+      {
+        class: "row g-0",
+        children: [
+          { class: "col-1", children: [{ class: "circle_online" }] },
+          {
+            class: "col-1 align-self-center text-center",
+            children: [{ tag: "img", src: "/image/communities/Elipse_4.png", class: "img-fluid", alt: "..." }]
+          },
+          {
+            class: "col-7 align-items-center justify-content-center d-flex",
+            children: [
+              {
+                class: "card-body",
+                children: [
+                  { tag: "h5", class: "card-title fw-bolder", text: "UI/UX Design Team" },
+                  { tag: "p", class: "card-text", text: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer." }
+                ]
+              }
+            ]
+          },
+          {
+            class: "col-3 justify-content-end text-end",
+            children: [
+              {
+                class: "col mt-2",
+                children: [
+                  { tag: "button", class: "btn btn-dark rounded-5 position-relative mt-1", children: [{ class: "ps-4", text: "UI/UX" }, { class: "circle_ui_ux" }] }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    class: "card mb-3 rounded-5 text-white",
+    style: "background-color: #333333;",
+    children: [
+      {
+        class: "row g-0",
+        children: [
+          { class: "col-1", children: [{ class: "circle_online" }] },
+          {
+            class: "col-1 align-self-center text-center",
+            children: [{ tag: "img", src: "/image/communities/Elipse_5.png", class: "img-fluid", alt: "..." }]
+          },
+          {
+            class: "col-7 align-items-center justify-content-center d-flex",
+            children: [
+              {
+                class: "card-body",
+                children: [
+                  { tag: "h5", class: "card-title fw-bolder", text: "Century Design" },
+                  { tag: "p", class: "card-text", text: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer." }
+                ]
+              }
+            ]
+          },
+          {
+            class: "col-3 justify-content-end text-end",
+            children: [
+              {
+                class: "col mt-2",
+                children: [
+                  { tag: "button", class: "btn btn-dark rounded-5 position-relative mt-1", children: [{ class: "ps-4", text: "Product Design" }, { class: "circle_product_design" }] }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  
+  
+  // Define more card objects here (copy and paste the structure for additional cards)
+];
+
+// Get the parent container where you want to append the cards
+const parentContainer = document.getElementById('cardContainer'); // Replace 'yourContainerId' with the actual container ID
+
+// Function to create and append HTML elements based on the cardObject
+function createCardElement(cardObject) {
+  const element = document.createElement(cardObject.tag || 'div');
+
+  if (cardObject.class) {
+    element.className = cardObject.class;
+  }
+
+  if (cardObject.style) {
+    element.style = cardObject.style;
+  }
+
+  if (cardObject.text) {
+    element.textContent = cardObject.text;
+  }
+
+  if (cardObject.src) {
+    element.src = cardObject.src;
+  }
+
+  if (cardObject.alt) {
+    element.alt = cardObject.alt;
+  }
+
+  if (cardObject.children && cardObject.children.length > 0) {
+    cardObject.children.forEach((child) => {
+      const childElement = createCardElement(child);
+      element.appendChild(childElement);
+    });
+  }
+
+  return element;
+}
+
+// Append each card object to the parent container
+cardObjects.forEach((cardObject) => {
+  const cardElement = createCardElement(cardObject);
+  parentContainer.appendChild(cardElement);
+});
+
+</script>

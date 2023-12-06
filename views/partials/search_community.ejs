@@ -1,0 +1,60 @@
+<style>
+    .vertical-line {
+        border-left: 1px solid #000;
+        height: 3rem;
+        margin: 0 10px;
+    }
+    .custom-btn {
+        background-color: #EAFE87;
+        border-color: #EAFE87;
+        color: #000;
+    }
+    @media (max-width: 768px) {
+        .btn.custom-btn {
+            display: none;
+        }
+        .vertical-line{
+            display: none;
+        }
+    }
+</style>
+
+<div class="row">
+    <form action="">
+        <div class="px-3 bg-gray_light rounded rounded-4 shadow-sm p-2">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <button id="button-addon2" type="submit" class="btn btn-link text-black"><i class="fa fa-search"></i></button>
+                </div> 
+                <div class="col-auto"> <!-- Adjust the column width as needed -->
+                    <button class="btn btn-dark rounded-5 position-relative mt-1">
+                        <div class="ps-4">Graphic Design</div>
+                        <div class="circle_graphic_design"></div>
+                    </button>
+                </div>
+                <div class="col-auto"> <!-- Adjust the column width as needed -->
+                    <button class="btn btn-dark rounded-5 position-relative mt-1">
+                        <div class="ps-4">UI/UX</div>
+                        <div class="circle_ui_ux"></div>
+                    </button>
+                </div>
+                <div class="col-auto"> <!-- Adjust the column width as needed -->
+                    <button class="btn btn-dark rounded-5 position-relative mt-1">
+                        <div class="ps-4">Product Design</div>
+                        <div class="circle_product_design"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    const customButtons = document.querySelectorAll(".custom-btn");
+    customButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            customButtons.forEach(btn => btn.classList.remove("btn-outline-highlighted"));
+            this.classList.add("btn-outline-highlighted");
+        });
+    });
+</script>

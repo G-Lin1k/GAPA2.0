@@ -1,0 +1,246 @@
+<%- include("partials/head.ejs") %>
+
+<link rel="stylesheet" href="css/feed.css">
+
+<div class="container-fluid slide-in-forwards">
+    <div class="row">
+        <div class="col-3" style="background-color: #1536FF;">
+            <%- include("partials/sidebar.ejs") %>    
+        </div>
+        <div class="col-9 sliding-up">
+            <div class="row mt-4">
+                <div class="col-11">
+                    <%- include("partials/search_desktop.ejs") -%>
+                    <div class="container">
+                        <div class="row" id="card-container">
+                            <!-- Cards will be dynamically generated here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <a href="/user_profile">
+                        <img src="image/desktop/user.png" alt="" class="user">
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('.slider-container').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: false,
+            autoplay: true, // Enable auto-play
+            autoplaySpeed: 1000, // Set the time (in milliseconds) between slides
+        });
+    });
+</script>
+
+<script>
+    const cardData = [
+    {
+        userImgSrc : "",
+        maker: "Anthony Lam",
+        imgSrc: "image/desktop/image_1.png",
+        title: "HKU Architecture Degree Show 2020",
+        text: "Being an unprecedented and memorable academic year, the key visual of HKU Architecture Degree Show 2020 stems from an abstract illustration of the calendar marking",
+        categoryLabel: "Graphic Design"
+    },
+    {
+        maker: "Anthony Lam",
+        imgSrc: "image/desktop/image_2.png",
+        title: "7 + 7 : Designers and AI Collaboration",
+        text: "Amidst the confusion of whether artificial intelligence, a new axis would replace human roles, seven designers chose to embrace the emergence of AI while continuing their individual path.",
+        categoryLabel: "UI/UX"
+    },
+    {
+        maker: "Anthony Lam",
+        imgSrc: "image/desktop/image_3.png",
+        title: "KNOT Stool",
+        text: "found/Found collaborated with Groundot and designed furniture that could inject fresh and new senses into the space through the combination of wood and other materials. We combined wood and webbing straps wittily so that customers could choose a color combination. Webbing of various colors and textures brings out the variety of furniture and also features hardware functions that enhance the robustness of the stool",
+        categoryLabel: "Product Design"
+    },
+    {
+        maker: "Anthony Lam",
+        imgSrc: "image/desktop/image_4.png",
+        title: "Little One High Chair",
+        text: "In our understanding, children should be treated with no discrimination. It is therefore important that children of different ages should sit at the same height as adults.</p><p>Little Chairman sums up the experience accumulated by predecessors and integrates the efficient adjustable function into the recognizable inverted Y-shaped legs. It goes well with the design language of adult furniture. The seat and pedal can be easily adjusted with just one hand, allowing the chair to grow with the child's body.</p><p>The curved backrest and seat ensure that the child sits comfortably for a long time. The use of thick material of the legs improves the overall stability of the chair and guarantees children's safety.",
+        categoryLabel: "Interior Design"
+    },
+    {
+        maker: "Anthony Lam",
+        imgSrc: "image/desktop/image_5.png",
+        title: "A Single Desk",
+        text: "A Single Desk is a single desk developed in collaboration with TAMKEN. It was designed to become an interior point by adding a colored iron screen to the small single-person desk. This screen is used as a note board and storage box while obscuring the user's view to focus.",
+        categoryLabel: "Product Design"
+    },
+    {
+        maker: "Anthony Lam",
+        imgSrc: "image/desktop/image_6.png",
+        title: "Miuda",
+        text: "Introducing the new visual identity we created for Bar Miúda, located in downtown São Paulo. The logo we designed was inspired by the verticality of São Paulo and the establishment's concept of providing a free and open space for interaction, movement, and expression of its audience - something rare in the capital city. The spaces between the letters in the logo were intentionally left open to symbolize this idea.",
+        categoryLabel: "Graphic Design"
+    },
+    {
+        maker: "Anthony Lam",
+        imgSrc: "image/desktop/image_7.png",
+        title: "New Illustration",
+        text: "These are some personal projects and various commissions I did over the last couple of months for Die Zeit Newspaper, Walla, Creative Mammals, Linderudlokka, DeGaulle Fleurance And Associes & GoodBuy Dietz.",
+        categoryLabel: "UI/UX"
+    },
+    {
+        maker: "Anthony Lam",
+        imgSrc: "image/desktop/image_8.png",
+        title: "Notitled Cosmetics",
+        text: "Notitled cosmetics project has focused on the aesthetic qualities of curved through the repeated twisted of curves. We have designed this liquid lipstick with the essence beauty of the most perfect curve and created it with motion graphics.",
+        categoryLabel: "UI/UX"
+    },
+    {
+        maker: "Anthony Lam",
+        imgSrc: "image/desktop/image_9.png",
+        title: "Bungauli",
+        text: "Made with love by Sarah Beatrice. Bungauli embraces the enjoyment of everyday objects through weaving. A statement piece that decorates your day at home with joy. Something that is made with love and passion in every knot, blooms with your inner spark, and brightens the surroundings wherever Bungauli piece is there. Joyous Craftsmanship.",
+        categoryLabel: "Architecture"
+    },
+    {
+        maker: "Anthony Lam",
+        imgSrc: "image/desktop/image_10.png",
+        title: "Printmaking Challenge V6",
+        text: "Printmaking",
+        categoryLabel: "Interior Design"
+    },
+    {
+        maker: "Anthony Lam",
+        imgSrc: "image/desktop/image_11.png",
+        title: "Rainbow_Connection chair",
+        text: "A song titled the Rainbow Connection speaks about how magical things like rainbows can be viewed from a theoretical, scientific perspective, but also from a magical, mythical side. People once figured there must be something over the rainbow, that it's the gates of heaven or the throne of God.This idea of a gateway to another world is closely linked with meditation and how it takes you to a higher state of consciousness.",
+        categoryLabel: "Architecture"
+    },
+    {
+        maker: "Anthony Lam",
+        imgSrc: "image/desktop/image_12.png",
+        title: "Urban Amenities - branding for modern furniture company",
+        text: "Introducing the new visual identity we created for Bar Miúda, located in downtown São Paulo. The logo we designed was inspired by the verticality of São Paulo and the establishment's concept of providing a free and open space for interaction, movement, and expression of its audience - something rare in the capital city. The spaces between the letters in the logo were intentionally left open to symbolize this idea.",
+        categoryLabel: "Graphic Design"
+    },
+    {
+        maker: "Anthony Lam",
+        imgSrc: "image/desktop/image_13.png",
+        title: "Miuda",
+        text: "Introducing the new visual identity we created for Bar Miúda, located in downtown São Paulo. The logo we designed was inspired by the verticality of São Paulo and the establishment's concept of providing a free and open space for interaction, movement, and expression of its audience - something rare in the capital city. The spaces between the letters in the logo were intentionally left open to symbolize this idea.",
+        categoryLabel: "Graphic Design"
+    },
+    // Add more card data objects as needed
+];
+
+function createCard(cardData) {
+    const cardContainer = document.getElementById("card-container");
+
+    // Create card element
+    const card = document.createElement("div");
+    card.classList.add("card", "rounded-4", "card-hover");
+
+    // Create card image
+    const cardImg = document.createElement("img");
+    cardImg.classList.add("card-img-top", "rounded-top-4");
+    cardImg.src = cardData.imgSrc;
+    cardImg.alt = "Card image cap";
+
+    // Create card body
+    const cardBody = document.createElement("div");
+    cardBody.classList.add("card-body");
+
+    // Create card maker paragraph
+    const cardMaker = createParagraph("card-text", cardData.maker);
+
+    // Create card title
+    const cardTitle = createHeading("h5", "card-title", cardData.title);
+
+    // Create card text
+    const cardText = createParagraph("card-text", cardData.text);
+
+    // Create and add the button to the card body with the category label
+    const buttonContainer = createButtonContainer(cardData.categoryLabel);
+
+    // Append elements to card body
+    cardBody.appendChild(cardMaker);
+    cardBody.appendChild(cardTitle);
+    cardBody.appendChild(cardText);
+    cardBody.appendChild(buttonContainer);
+
+    // Append elements to the card
+    card.appendChild(cardImg);
+    card.appendChild(cardBody);
+
+    // Append the card to the card container
+    cardContainer.appendChild(card);
+}
+
+function createParagraph(className, text) {
+    const paragraph = document.createElement("p");
+    paragraph.classList.add(className);
+    paragraph.textContent = text;
+    return paragraph;   
+}
+
+function createHeading(headingType, className, text) {
+    const heading = document.createElement(headingType);
+    heading.classList.add(className);
+    heading.textContent = text;
+    return heading;
+}
+
+function createButtonContainer(categoryLabel) {
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("btn-container");
+    const categoryLabelClass = categoryLabel.replace(/\s+/g, '_').toLowerCase();
+
+    if (categoryLabel === "UI/UX") {
+        buttonContainer.innerHTML = `
+            <div class="">
+                <button class="btn btn-dark rounded-5 position-relative mt-1">
+                    <div class="ps-4">${categoryLabel}</div>
+                    <div class="circle_ui_ux"></div>
+                </button> 
+            </div>
+        `;
+    } else {
+        buttonContainer.innerHTML = `
+            <div class="">
+                <button class="btn btn-dark rounded-5 position-relative mt-1">
+                    <div class="ps-4">${categoryLabel}</div>
+                    <div class="circle_${categoryLabelClass}"></div>
+                </button> 
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <img src="image/desktop/arrow_up.png" alt="">
+                </div>
+                <div class="col-2">
+                    922
+                </div>
+                <div class="col-4"></div>
+                <div class="col-2">
+                    <img src="image/desktop/share.png" alt="">    
+                </div>
+                <div class="col-2">
+                    <img src="image/desktop/bookmark.png" alt="">
+                </div>
+            </div>
+        `;
+    }
+
+    return buttonContainer;
+}
+
+
+
+    
+    cardData.forEach((data) => {createCard(data);});
+</script>
+<%- include("partials/footer.ejs") %>

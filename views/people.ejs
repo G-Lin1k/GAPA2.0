@@ -1,0 +1,179 @@
+<%- include("partials/head.ejs") %>
+
+<link rel="stylesheet" href="css/feed.css">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3" style="background-color: #1536FF;">
+            <%- include("partials/sidebar.ejs") %>    
+        </div>
+        <div class="col-9">
+            <div class="row mt-4">
+                <div class="col-11">
+                    <%- include("partials/search_desktop.ejs") -%>
+                    <div class="container">
+                        <div class="row" id="card-container">
+                            <!-- Cards will be dynamically generated here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <a href="/user_profile">
+                        <img src="image/desktop/user.png" alt="" class="user">
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const cardData = [
+        {
+            creatorImage: "image/people/user_1.png",
+            imageUrl: "image/people/image_1.png",
+            creator: "found / Founder",
+            job: "Design Studio",
+            isFollowing: false
+        },
+        {
+            creatorImage: "image/people/user_2.png",
+            imageUrl: "image/people/image_2.png",
+            creator: "Charlie Calzoni",
+            job: "Student Architect",
+            isFollowing: false
+        },
+        {
+            creatorImage: "image/people/user_3.png",
+            imageUrl: "image/people/image_3.png",
+            creator: "Paityn Dorwart",
+            job: "Product Designer",
+            isFollowing: false
+        },
+        {
+            creatorImage: "image/people/user_4.png",
+            imageUrl: "image/people/image_4.png",
+            creator: "Justin Aminoff",
+            job: "Interior Desinger",
+            isFollowing: false
+        },
+        {
+            creatorImage: "image/people/user_5.png",
+            imageUrl: "image/people/image_5.png",
+            creator: "Ann Lubin",
+            job: "Fashion Designer",
+            isFollowing: false
+        },
+        {
+            creatorImage: "image/people/user_6.png",
+            imageUrl: "image/people/image_6.png",
+            creator: "Kierra Geidt",
+            job: "Architect",
+            isFollowing: false
+        },
+        {
+            creatorImage: "image/people/user_7.png",
+            imageUrl: "image/people/image_7.png",
+            creator: "Lindsey Ann",
+            job: "Design Studio",
+            isFollowing: false
+        },
+        {
+            creatorImage: "image/people/user_8.png",
+            imageUrl: "image/people/image_8.png",
+            creator: "Rayna Korsgaard",
+            job: "Illustrator",
+            isFollowing: false
+        },
+        {
+            creatorImage: "image/people/user_9.png",
+            imageUrl: "image/people/image_9.png",
+            creator: "Skylar Dorwart",
+            job: "Animator",
+            isFollowing: false
+        },
+        {
+            creatorImage: "image/people/user_10.png",
+            imageUrl: "image/people/image_10.png",
+            creator: "Kianna Stanton",
+            job: "Graphic Designer",
+            isFollowing: false
+        },
+        {
+            creatorImage: "image/people/user_11.png",
+            imageUrl: "image/people/image_11.png",
+            creator: "Emerson Schleifer",
+            job: "Animator",
+            isFollowing: false
+        },
+        {
+            creatorImage: "image/people/user_12.png",
+            imageUrl: "image/people/image_12.png",
+            creator: "Ann Rhiel Madsen",
+            job: "Illustrator",
+            isFollowing: false
+        },
+        // Add more card objects as needed
+    ];
+
+    function createCard(card, index) {
+    const cardElement = document.createElement("div");
+    cardElement.classList.add("col-lg-4", "col-md-6", "mb-4");
+
+    // Initialize the text for the button based on the initial state
+    const initialButtonText = card.isFollowing ? "Following" : "Follow";
+    
+    // Determine the margin class based on the initial state
+    const buttonMarginClass = card.isFollowing ? 'm-0' : 'ms-2';
+
+    cardElement.innerHTML = `
+        <div class="card rounded-4 text-white card-hover" style="background-color:#333333">
+            <div class="card-body m-2">
+                <div class="row">
+                    <div class="col-2 p-0 m-0 mx-2">
+                        <img src="${card.creatorImage}" alt="Creator Image" class="img-fluid">
+                    </div>
+                    <div class="col-5 p-0 m-0">
+                        <h5 class="card-creator p-0 m-0" style="font-size:16px">${card.creator} <br> </h5>
+                        <p class="card-job" style="font-size:14px;">${card.job}</p>
+                    </div>
+                    <div class="col-3 text-right">
+                        <button class="btn btn-primary rounded-4 follow-button ${buttonMarginClass}" data-index="${index}">${initialButtonText}</button>
+                    </div>
+                </div>
+            </div>
+            <img src="${card.imageUrl}" class="card-img-top p-3 rounded-5" alt="Card Image">
+        </div>
+    `;
+
+    const followButton = cardElement.querySelector(".follow-button");
+
+    followButton.addEventListener("click", () => {
+        // Toggle isFollowing property
+        card.isFollowing = !card.isFollowing;
+        // Update the button text
+        followButton.textContent = card.isFollowing ? "Following" : "Follow";
+
+        // Determine the margin class based on the updated state
+        const updatedButtonMarginClass = card.isFollowing ? 'm-0' : 'ms-2';
+
+        // Remove the previous margin class and add the updated margin class
+        followButton.classList.remove('ms-2', 'm-0');
+        followButton.classList.add(updatedButtonMarginClass);
+    });
+
+    return cardElement;
+}
+
+
+    // Usage:
+    const cardContainer = document.getElementById("card-container");
+
+    cardData.forEach(card => {
+        cardContainer.appendChild(createCard(card));
+    });
+</script>
+
+<%- include("partials/footer.ejs") %>

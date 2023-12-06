@@ -1,0 +1,399 @@
+<%- include("partials/head.ejs") %>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3" style="background-color: #1536FF;">
+            <%- include("partials/sidebar.ejs") %>          
+        </div>
+        <div class="col-9 m-0 p-0">
+            <% if (user && user.firstName && user.email) { %>
+            <img src="image/profile/background_top.png" alt="" class="img-fluid" style="position: relative;">
+            <div class="image-container" style="position: absolute; top: 10%; left: 2%;">
+            <div class="d-flex justify-content-start">
+                <img id="selectedAvatar" src="image/profile/user_profile.png" class="rounded-pill" style="width: 200px; height: 200px; object-fit: cover;" onclick="triggerFileInput()" />
+            </div>
+            </div>
+            <div class="d-flex justify-content-start ms-4 ps-3">
+                <!-- <div class="btn btn-primary btn-rounded"> -->
+                    <!-- <label class="form-label text-white m-1" for="customFile2">Choose file</label> -->
+                    <input type="file" class="form-control d-none" id="customFile2" onchange="displaySelectedImage(event, 'selectedAvatar')" />
+                <!-- </div> -->
+            </div>
+            <div class="container-fluid mt-3 pt-3">
+                <h3 class="mt-5 pt-5">
+                    <% if (user.firstName) { %>
+                        <%= user.firstName %>
+                    <% } %>
+                    <% if (user.lastName) { %>
+                        <%= user.lastName %>
+                    <% } %>
+                </h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <% if (user.job) { %>
+                            <p class="m-0 p-0"><%= user.job %></p>
+                            <% } else { %>
+                            <p class="m-0 p-0">Jobless</p>
+                            <% } %>
+                        </div>
+                        <div class="col-md-6 justify-content-end text-end">
+                            <button id="editJobButton" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editJobModal">
+                            :</button>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="editJobModal" tabindex="-1" aria-labelledby="editJobModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editJobModalLabel">Edit Job</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="editJobForm" action="/edit" method="post">
+                                        <!-- new job -->
+                                        <label for="job">New Job:</label>
+                                        <input type="text" id="job" name="job" class="form-control" placeholder="Enter new job">
+                                        <!-- new location -->
+                                        <label for="location">Location:</label>
+                                        <input type="text" id="location" name="location" class="form-control" placeholder="Enter Location">
+                                        <!-- about -->
+                                        <label for="about">About:</label>
+                                        <input type="text" id="about" name="about" class="form-control" placeholder="About Description">
+                                        <!-- gmail -->
+                                        <label for="gmail">gmail:</label>
+                                        <input type="text" id="gmail" name="gmail" class="form-control" placeholder="@gmail.com">
+                                        <!-- phone number -->
+                                        <label for="about">Phone Number:</label>
+                                        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="+62">
+                                        <!-- instagram -->
+                                        <label for="about">Instagram:</label>
+                                        <input type="text" id="instagram" name="instagram" class="form-control" placeholder="instagram">
+                                        <!-- twitter -->
+                                        <label for="about">Twitter:</label>
+                                        <input type="text" id="twitter" name="twitter" class="form-control" placeholder="twitter">
+
+                                        <input type="hidden" id="email" name="email" value="<%= user.email %>">
+                                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const editJobButton = document.getElementById('editJobButton');
+                            const editJobModal = new bootstrap.Modal(document.getElementById('editJobModal'));
+                    
+                            editJobButton.addEventListener('click', () => {
+                                editJobModal.show();
+                            });
+                        });
+                    </script>                        
+                
+                <div class="row ">
+                    <div class="col-12 d-flex align-items-center">
+                        <i class="fas fa-map-marker me-2"></i>
+                        <% if (user.location) { %>
+                            <p class="pt-3"><%= user.location %></p>
+                        <% } else { %>
+                            <p class="pt-3">User Location Not Found</p>
+                        <% } %>
+                    </div>
+                </div>                
+                <div class="row mt-3 ps-3">
+                    <div class="col bg-light rounded-5 mr-4 p-3">
+                        <h1>About</h1>
+                        <% if (user.about && user.about.trim().length > 0) { %>
+                            <p><%= user.about %></p>
+                        <% } else { %>
+                            <p>Describe Yourself</p>
+                        <% } %>
+                    </div>                    
+                    <div class="col bg-light rounded-5 mr-4 p-3">
+                        <h1>Reach me</h1>
+                        <% if (user.gmail && user.gmail.trim().length > 0) { %>
+                            <p><%= user.gmail %></p>
+                        <% } else { %>
+                            <p>Add Gmail gmail@gmail.com</p>
+                        <% } %>
+                        <% if (user.phoneNumber && user.phoneNumber.trim().length > 0) { %>
+                            <p><%= user.phoneNumber %></p>
+                        <% } else { %>
+                            <p>Add Phone Number : +62819381939139</p>
+                        <% } %>
+                        <div class="row">
+                            <div class="col-auto">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div class="col">
+                                <% if (user.instagram && user.instagram.trim().length > 0) { %>
+                                    <span><%= user.instagram %></span>
+                                <% } else { %>
+                                    <span>Add Instagram @instagram</span>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-auto">
+                                <i class="fab fa-twitter"></i>
+                            </div>
+                            <div class="col">
+                                <% if (user.twitter && user.twitter.trim().length > 0) { %>
+                                    <span><%= user.twitter %></span>
+                                <% } else { %>
+                                    <span>Add Twitter</span>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col bg-light rounded-5 mt-3 mb-3 mr-4 p-3">
+                        <h1>Experience</h1>
+                        <!-- Assuming there's a div with the ID "experience-container" to display experiences -->
+                        <div id="experience-container">
+                            <% if (userExperiences.length > 0) { %>
+                                <h2>Experiences:</h2>
+                                <ul>
+                                    <% userExperiences.forEach(experience => { %>
+                                        <li><%= experience.position %> at <%= experience.company %> (<%= experience.startYear %> - <%= experience.endYear %>)</li>
+                                        <!-- Add more details as needed -->
+                                    <% }); %>
+                                </ul>
+                            <% } else { %>
+                                <p>No experiences to display.</p>
+                            <% } %>
+                        </div>
+                        <!-- <button onclick="addExperience()">Add Experience</button> -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                            Add Experience
+                        </button>
+                    <div class="col mt-3 mb-3 mr-4">
+                        <!-- Column -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Button trigger modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Experience</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Input fields for position, company, start-year, end-year, description, and image -->
+                        <form id="experienceForm">
+                            <div class="mb-3">
+                                <label for="position" class="form-label">Position</label>
+                                <input type="text" class="form-control" id="position" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="company" class="form-label">Company</label>
+                                <input type="text" class="form-control" id="company" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="startYear" class="form-label">Start Year</label>
+                                <input type="text" class="form-control" id="startYear" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="endYear" class="form-label">End Year</label>
+                                <input type="text" class="form-control" id="endYear" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" id="description" rows="3" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Image</label>
+                                <input type="file" class="form-control" id="image" accept="image/*">
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="saveAndRenderExperience()">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <% } else { %>
+            <p>User not found</p>
+        <% } %>   
+        
+    </div>
+</div>
+
+<script>
+    // Define an array to store job experiences
+    var experiences = [];
+
+    // Function to add a new experience
+    function addExperience(experience) {
+        // Add the new experience to the array
+        experiences.push(experience);
+
+        // Render the experiences
+        renderExperiences();
+    }
+
+    // Function to render the experiences
+    function renderExperiences() {
+        var container = document.getElementById("experience-container");
+        container.innerHTML = ""; // Clear the container
+
+        // Loop through each experience and create HTML elements
+        for (var i = 0; i < experiences.length; i++) {
+            var experience = experiences[i];
+
+            // Create HTML elements for each experience
+            var experienceDiv = document.createElement("div");
+            experienceDiv.classList.add("row");
+
+            var logoDiv = document.createElement("div");
+            logoDiv.classList.add("col-2");
+            var logoImg = document.createElement("img");
+            logoImg.src = experience.companyLogo;
+            logoImg.alt = "";
+            logoDiv.appendChild(logoImg);
+            experienceDiv.appendChild(logoDiv);
+
+            var detailsDiv = document.createElement("div");
+            detailsDiv.classList.add("col-6");
+            var companyNameHeader = document.createElement("h5");
+            companyNameHeader.textContent = experience.companyName;
+            var locationParagraph = document.createElement("p");
+            locationParagraph.textContent = experience.location;
+            detailsDiv.appendChild(companyNameHeader);
+            detailsDiv.appendChild(locationParagraph);
+            experienceDiv.appendChild(detailsDiv);
+
+            var dateDiv = document.createElement("div");
+            dateDiv.classList.add("col-4");
+            var dateParagraph = document.createElement("p");
+            dateParagraph.classList.add("fw-bold");
+            dateParagraph.textContent = experience.date;
+            dateDiv.appendChild(dateParagraph);
+            experienceDiv.appendChild(dateDiv);
+
+            // Append the experienceDiv to the container
+            container.appendChild(experienceDiv);
+
+            // Create and append the second row for description
+            var descriptionRow = document.createElement("div");
+            descriptionRow.classList.add("row");
+
+            var emptyCol2 = document.createElement("div");
+            emptyCol2.classList.add("col-2");
+            descriptionRow.appendChild(emptyCol2);
+
+            var descriptionCol10 = document.createElement("div");
+            descriptionCol10.classList.add("col-10");
+            var descriptionParagraph = document.createElement("p");
+            descriptionParagraph.textContent = experience.description;
+            descriptionCol10.appendChild(descriptionParagraph);
+            descriptionRow.appendChild(descriptionCol10);
+
+            // Append the descriptionRow to the container
+            container.appendChild(descriptionRow);
+        }
+    }
+
+    // Function to save the experience and render
+    function saveAndRenderExperience() {
+        // Retrieve input values
+        const position = document.getElementById('position').value;
+        const company = document.getElementById('company').value;
+        const startYear = document.getElementById('startYear').value;
+        const endYear = document.getElementById('endYear').value;
+        const description = document.getElementById('description').value;
+        const image = document.getElementById('image').files[0];
+
+        // Validate input values if needed
+
+        // Prepare the experience object
+        const experience = {
+            companyLogo: "image/profile/nike.png", // Set the image path as needed
+            companyName: company,
+            location: "Jakarta, Indonesia", // Set the location as needed
+            date: `${startYear}-${endYear}`,
+            description: description,
+        };
+
+        // Add the experience to the array
+        addExperience(experience);
+
+        // Optionally, you can close the modal after successful submission
+        const modal = new bootstrap.Modal(document.getElementById('myModal'));
+        modal.hide();
+    }
+
+    // Initial rendering
+    renderExperiences();
+</script>
+
+
+<script>
+    $(document).ready(function(){
+        $('.slider-container').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: false,
+            autoplay: true, // Enable auto-play
+            autoplaySpeed: 1000, // Set the time (in milliseconds) between slides
+        });
+    });
+</script>
+<script>
+    function triggerFileInput() {
+        // Get the image and file input elements
+        const uploadedImage = document.getElementById('uploaded-image');
+        const fileInput = document.getElementById('formFile');
+        const fileInputContainer = document.getElementById('fileInputContainer');
+
+        // Reset the image source and show the file input container
+        uploadedImage.src = ""; // Set an empty source or a default image source
+        fileInputContainer.style.display = 'block';
+
+        // Trigger a click on the file input to allow the user to select a new image
+        fileInput.click();
+    }
+
+    function handleFileSelection() {
+        // Get the file input and its container
+        const fileInput = document.getElementById('formFile');
+        const fileInputContainer = document.getElementById('fileInputContainer');
+
+        // Check if a file is selected
+        if (fileInput.files.length > 0) {
+            // Hide the container
+            fileInputContainer.style.display = 'none';
+        }
+    }
+    function triggerFileInput() {
+        document.getElementById('customFile2').click();
+    }
+
+    function displaySelectedImage(event, imgId) {
+        const selectedImage = document.getElementById(imgId);
+        const fileInput = event.target;
+
+        if (fileInput.files && fileInput.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                selectedImage.src = e.target.result;
+            };
+
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+</script>
+
+
+
+<script src="scripts/scripts.js"></script>
+
+
+<%- include("partials/footer.ejs") %>

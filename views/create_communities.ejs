@@ -1,0 +1,86 @@
+<%- include("partials/head.ejs") %>
+
+<link rel="stylesheet" href="css/feed.css">
+<style>
+    #selectedAvatar {
+        background-color: #D9D9D9;
+        border-radius: 50%;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3" style="background-color: #1536FF;">
+            <%- include("partials/sidebar.ejs") %>
+        </div>
+        <div class="col-9">
+            <h1 class="fw-bold mt-5 pt-5">Create Community</h1>
+            <div class="form-group">
+                <label for="exampleInputName" class="fw-bold fs-4">Name</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Community Name" style="background-color: #D9D9D9;">
+            </div>            
+            <div class="form-group">
+                <label for="exampleInputAbout" class="fw-bold fs-4">About</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter About Description" style="background-color: #D9D9D9;">
+            </div>            
+            <div class="form-group">
+                <label for="exampleInputAbout" class="fw-bold fs-4">Profile Picture</label>
+            </div>
+
+            <div>
+                <div class="d-flex justify-content-start mb-4">
+                    <img id="selectedAvatar" src="" class="rounded-5" style="width: 200px; height: 200px; object-fit: cover;" onclick="triggerFileInput()" />
+                </div>
+                <div class="d-flex justify-content-start ms-4 ps-3">
+                    <!-- <div class="btn btn-primary btn-rounded"> -->
+                        <!-- <label class="form-label text-white m-1" for="customFile2">Choose file</label> -->
+                        <input type="file" class="form-control d-none" id="customFile2" onchange="displaySelectedImage(event, 'selectedAvatar')" />
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputName" class="fw-bold fs-4">Tags</label>
+                <%- include("partials/search_community.ejs") %>
+            </div>
+            <div class="d-flex justify-content-end mb-3">
+                <button type="button" class="btn btn-secondary me-3 rounded-5 fs-5 fw-bold">Cancel</button>
+                <button type="button" class="btn btn-primary me-3 rounded-5 fs-5 fw-bold">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('.slider-container').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: false,
+            autoplay: true, // Enable auto-play
+            autoplaySpeed: 1000, // Set the time (in milliseconds) between slides
+        });
+    });
+    function triggerFileInput() {
+        document.getElementById('customFile2').click();
+    }
+
+    function displaySelectedImage(event, imgId) {
+        const selectedImage = document.getElementById(imgId);
+        const fileInput = event.target;
+
+        if (fileInput.files && fileInput.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                selectedImage.src = e.target.result;
+            };
+
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+
+</script>
+
+
+<%- include("partials/footer.ejs") %>

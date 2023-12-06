@@ -1,0 +1,176 @@
+<%- include("partials/head.ejs") %>
+
+<style>
+  .add {
+    transition: opacity 0.6s; /* Add a transition for smooth animation */
+  }
+
+  .add:hover {
+    opacity: 0.2; /* Change to the desired opacity value when hovering */
+  }
+</style>
+
+
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3" style="background-color: #1536FF;">
+            <%- include("partials/sidebar.ejs") %>                                    
+        </div>
+        <div class="col-9">
+            <div class="row mt-4">
+                <div class="col-11">
+                    <%- include("partials/search_desktop.ejs") -%>
+                </div>
+                <div class="col-1">
+                    <a href="/user">
+                        <img src="image/desktop/user.png" alt="" class="user">
+                    </a>
+                </div>
+            </div>
+            <div class="container-fluid d-flex flex-column justify-content-center align-items-center rounded-5 mt-1 mb-3" style="background-color: white;">
+              <button class="btn btn-warning btn-lg rounded-circle p-5 my-3 add" onclick="location.href='/create_communities';" style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; background-color: #EAFE87;border:none;">
+                <span class="h1 text-black pt-2">+</span>
+              </button>
+            
+            </div>          
+            <div class="div" id="cardContainer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("partials/footer.ejs") %>
+
+<script>
+  // Define the card data as a separate object
+  const cardData = [
+    {
+      imgSrc: "/image/communities/Elipse_1.png",
+      title: "Furniture Design Enthusiast",
+      text: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+      buttonData: [
+        { text: "Interior Design", iconClass: "circle_interior_design" },
+        { text: "Product Design", iconClass: "circle_product_design" }
+      ]
+    },
+    {
+      imgSrc: "/image/communities/Elipse_2.png",
+      title: "Architecture",
+      text: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+      buttonData: [
+        { text: "Architecture", iconClass: "circle_architecture" }
+      ]
+    },
+    {
+      imgSrc: "/image/communities/Elipse_3.png",
+      title: "Graphic Design",
+      text: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+      buttonData: [
+        { text: "Graphic Design", iconClass: "circle_graphic_design" }
+      ]
+    },
+    {
+      imgSrc: "/image/communities/Elipse_4.png",
+      title: "UI/UX Design Team",
+      text: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+      buttonData: [
+        { text: "UI/UX", iconClass: "circle_ui_ux" }
+      ]
+    },
+    {
+      imgSrc: "/image/communities/Elipse_5.png",
+      title: "Century Design",
+      text: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+      buttonData: [
+        { text: "Product Design", iconClass: "circle_product_design" }
+      ]
+    },
+  ];
+
+  // Create the card using the data
+  function createCard(cardData) {
+    const card = document.createElement("div");
+    card.classList.add("card", "mb-3", "rounded-5", "text-white");
+    card.style.backgroundColor = "#333333";
+
+    const row = document.createElement("div");
+    row.classList.add("row", "g-0");
+
+    // Create the first column with the image
+    const col1 = document.createElement("div");
+    col1.classList.add("col-2", "align-self-center", "text-center");
+
+    const img = document.createElement("img");
+    img.src = cardData.imgSrc;
+    img.classList.add("img-fluid");
+    img.alt = "...";
+
+    col1.appendChild(img);
+
+    // Create the second column with card body
+    const col2 = document.createElement("div");
+    col2.classList.add("col-7", "align-items-center", "justify-content-center", "d-flex");
+
+    const cardBody = document.createElement("div");
+    cardBody.classList.add("card-body");
+
+    const cardTitle = document.createElement("h5");
+    cardTitle.classList.add("card-title", "fw-bolder");
+    cardTitle.textContent = cardData.title;
+
+    const cardText = document.createElement("p");
+    cardText.classList.add("card-text");
+    cardText.textContent = cardData.text;
+
+    cardBody.appendChild(cardTitle);
+    cardBody.appendChild(cardText);
+
+    col2.appendChild(cardBody);
+
+    // Create the third column with buttons
+    const col3 = document.createElement("div");
+    col3.classList.add("col-3", "justify-content-end", "text-end");
+
+    const col4 = document.createElement("div");
+    col4.classList.add("col", "mt-2");
+
+    // Create buttons from the provided data
+    cardData.buttonData.forEach(buttonInfo => {
+      const button = document.createElement("button");
+      button.classList.add("btn", "btn-dark", "rounded-5", "position-relative", "mt-1");
+
+      const buttonText = document.createElement("div");
+      buttonText.classList.add("ps-4");
+      buttonText.textContent = buttonInfo.text;
+
+      const buttonIcon = document.createElement("div");
+      buttonIcon.classList.add(buttonInfo.iconClass);
+
+      button.appendChild(buttonText);
+      button.appendChild(buttonIcon);
+
+      col4.appendChild(button);
+    });
+
+    col3.appendChild(col4);
+
+    row.appendChild(col1);
+    row.appendChild(col2);
+    row.appendChild(col3);
+
+    card.appendChild(row);
+
+    return card;
+  }
+
+  
+  const cardContainer = document.getElementById("cardContainer");
+
+  cardData.forEach(cardInfo => {
+    const card = createCard(cardInfo);
+    cardContainer.appendChild(card);
+  });
+</script>

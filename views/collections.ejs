@@ -1,0 +1,54 @@
+<!-- collections.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - <%= collectionName %></title>
+</head>
+<body>
+    <h1><%= collectionName %> Collection</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <!-- Add table headers for all fields -->
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Job</th>
+                <th>Location</th>
+                <th>Experience</th>
+                <th>About</th>
+                <th>Gmail</th>
+                <th>Instagram</th>
+                <th>Phone Number</th>
+                <th>Twitter</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% documents.forEach((document) => { %>
+                <tr>
+                    <!-- Add table cells for all fields -->
+                    <td><%= document.email %></td>
+                    <td><%= document.firstName %></td>
+                    <td><%= document.lastName %></td>
+                    <td><%= document.job %></td>
+                    <td><%= document.location %></td>
+                    <td><%= document.experience %></td>
+                    <td><%= document.about %></td>
+                    <td><%= document.gmail %></td>
+                    <td><%= document.instagram %></td>
+                    <td><%= document.phoneNumber %></td>
+                    <td><%= document.twitter %></td>
+                </tr>
+                <!-- Debug: Output the entire document -->
+                <tr>
+                    <td colspan="11"><%= JSON.stringify(document) %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

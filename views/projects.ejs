@@ -1,0 +1,529 @@
+<%- include("partials/head.ejs") %>
+
+<style>
+    body {
+        background: aliceblue;
+    }
+    h1 {
+        color: black;
+        padding: 10px 0;
+    }
+    .card {
+        background-color: #333333;
+        color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        border: none;
+        &:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+        }
+        a {
+                color: initial;
+                &:hover {
+                text-decoration: initial;
+            }
+        }
+        .text-muted i {
+            margin: 0 10px;
+        }
+    }
+    hr{
+        height: 5px;
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    .circle_graphic_design {
+        width: 20px; /* Adjust the size as needed */
+        height: 20px; /* Adjust the size as needed */
+        border-radius: 50%; /* Makes it a circle */
+        background-color: #FF4C00; /* Background color of the circle */
+        position: absolute;
+        top: 50%;
+        right: 0px; /* Adjust the position as needed */
+        left: 10px;
+        transform: translateY(-50%);
+    }
+    .circle_ui_ux {
+        width: 20px; /* Adjust the size as needed */
+        height: 20px; /* Adjust the size as needed */
+        border-radius: 50%; /* Makes it a circle */
+        background-color: #6100FF; /* Background color of the circle */
+        position: absolute;
+        top: 50%;
+        right: 0px; /* Adjust the position as needed */
+        left: 10px;
+        transform: translateY(-50%);
+    }
+    .circle_product_design {
+        width: 20px; /* Adjust the size as needed */
+        height: 20px; /* Adjust the size as needed */
+        border-radius: 50%; /* Makes it a circle */
+        background-color: #FDFF8F; /* Background color of the circle */
+        position: absolute;
+        top: 50%;
+        right: 0px; /* Adjust the position as needed */
+        left: 10px;
+        transform: translateY(-50%);
+    }
+    .circle_architecture {
+        width: 20px; /* Adjust the size as needed */
+        height: 20px; /* Adjust the size as needed */
+        border-radius: 50%; /* Makes it a circle */
+        background-color: #319F43; /* Background color of the circle */
+        position: absolute;
+        top: 50%;
+        right: 0px; /* Adjust the position as needed */
+        left: 10px;
+        transform: translateY(-50%);
+    }
+    .circle_interior_design {
+        width: 20px; /* Adjust the size as needed */
+        height: 20px; /* Adjust the size as needed */
+        border-radius: 50%; /* Makes it a circle */
+        background-color: #587DBD; /* Background color of the circle */
+        position: absolute;
+        top: 50%;
+        right: 0px; /* Adjust the position as needed */
+        left: 10px;
+        transform: translateY(-50%);
+    }
+    .user:hover{
+        opacity: 0.8;
+    }
+    .card-hover {
+        transition: opacity 2s ease; /* Add a smooth transition effect */
+    }
+
+    .card-hover:hover {
+        opacity: 0.9; /* Reduce opacity on hover */
+        transform: scale(1.05);
+    }
+
+    .vertical-line {
+        border-left: 1px solid #000; /* You can adjust the color and width as needed */
+        height: 3rem; /* Adjust the height to your preference */
+        margin: 0 10px; /* Adjust the margin to control the spacing between the line and buttons */
+    }
+    .btn-outline-highlighted {
+            background-color: #ffee00; /* Change this color as desired */
+    }
+
+    .custom-btn {
+        background-color: #EAFE87;
+        border-color: #EAFE87;
+        color: #000; /* You can adjust the text color as needed */
+    }
+    @media (max-width: 768px) {
+        .user{
+            display: none;
+        }
+        .hide{
+            display: none;
+        }
+    }
+    .card-author-container {
+        display: flex; /* Use flexbox layout */
+        align-items: center; /* Align items vertically in the center */
+    }
+
+    .card-image {
+        margin-right: 10px; /* Add some spacing between the image and text */
+    }
+
+    .card-text {
+        flex: 1; /* Allow the text to take up remaining space */
+    }
+</style>
+<body class="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 hide" style="background-color: #1536FF;">
+                <%- include("partials/sidebar.ejs") %>                  
+            </div>
+            <div class="col-9">
+                <div class="row mt-4">
+                    <div class="col-11">
+                        <%- include("partials/search_desktop.ejs") -%>
+                    </div>
+                    <div class="col-1">
+                        <a href="/user">
+                            <img src="image/desktop/user.png" alt="" class="user">
+                        </a>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="card-columns" id="card-container">
+                        <!-- JavaScript will add buttons here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="container">
+        <div class="text-center">
+          <h1>Bootstrap card tiled layout</h1>
+        </div>
+        <div class="container">
+            <div class="card-columns">
+                <div class="card">
+                    <img class="card-img-top" src="https://images.unsplash.com/photo-1535025639604-9a804c092faa?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6cb0ceb620f241feb2f859e273634393&auto=format&fit=crop&w=500&q=80" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Lorem ipsum dolor sit amet.</h5>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium ad alias, aliquid amet aspernatur atque culpa cum debitis dicta doloremque, dolorum ea eos et excepturi explicabo facilis harum illo impedit incidunt laborum laudantium...
+                        </p>
+                        <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i>1000<i class="far fa-user"></i>admin<i class="fas fa-calendar-alt"></i>Jan 20, 2018</small></p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img class="card-img-top" src="https://images.unsplash.com/photo-1472076638602-b1f8b1ac0b4a?ixlib=rb-0.3.5&s=63c9de7246b535be56c8eaff9b87dd89&auto=format&fit=crop&w=500&q=80" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, doloremque!</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio iusto maxime nemo omnis praesentium similique.</p>
+                        <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i>1000<i class="far fa-user"></i>admin<i class="fas fa-calendar-alt"></i>Jan 20, 2018</small></p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img class="card-img-top" src="https://images.unsplash.com/photo-1535086181678-5a5c4d23aa7d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=34c86263bec2c8f74ceb74e9f4c5a5fc&auto=format&fit=crop&w=500&q=80" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur.</h5>
+                    <p class="card-text">Amet commodi deleniti enim laboriosam odio placeat praesentium quis ratione rerum suscipit.</p>
+                    <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i>1000<i class="far fa-user"></i>admin<i class="fas fa-calendar-alt"></i>Jan 20, 2018</small></p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img class="card-img-top" src="https://images.unsplash.com/photo-1535074153497-b08c5aa9c236?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d2aaf944a59f16fe1fe72f5057b3a7dd&auto=format&fit=crop&w=500&q=80" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur.</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i>1000<i class="far fa-user"></i>admin<i class="fas fa-calendar-alt"></i>Jan 20, 2018</small></p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img class="card-img-top" src="https://images.unsplash.com/photo-1535124406821-d2848dfbb25c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=98c434d75b44c9c23fc9df2a9a77d59f&auto=format&fit=crop&w=500&q=80" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Lorem ipsum dolor sit amet.</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, consequatur culpa cumque deserunt dignissimos error explicabo fugiat harum ipsam magni minus mollitia nemo perferendis qui repellendus rerum saepe vel voluptate voluptatem voluptatum!
+                            Aperiam, labore, molestiae!..</p>
+                        <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i>1000<i class="far fa-user"></i>admin<i class="fas fa-calendar-alt"></i>Jan 20, 2018</small></p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img class="card-img-top" src="https://images.unsplash.com/photo-1508015926936-4eddcc6d4866?ixlib=rb-0.3.5&s=10b3a8717ab609be8d7786cab50c4e0b&auto=format&fit=crop&w=500&q=80" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque commodi debitis eaque explicabo fuga maiores necessitatibus, neque omnis optio vel!</p>
+                        <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i>1000<i class="far fa-user"></i>admin<i class="fas fa-calendar-alt"></i>Jan 20, 2018</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div> -->
+
+<script>
+    // Define an array of card data as JavaScript objects
+
+    const cardData = [
+    {
+        userImgSrc : "image/desktop/users.png",
+        maker: "Anthony Lam",
+        imgSrc: "image/desktop/image_1.png",
+        title: "HKU Architecture Degree Show 2020",
+        text: "Being an unprecedented and memorable academic year, the key visual of HKU Architecture Degree Show 2020 stems from an abstract illustration of the calendar marking",
+        categoryLabel: "Graphic Design",
+        upvote: "922"
+    },
+    {
+        userImgSrc : "image/desktop/users.png",
+        maker: "Anthony Lam",
+        imgSrc: "image/desktop/image_2.png",
+        title: "7 + 7 : Designers and AI Collaboration",
+        text: "Amidst the confusion of whether artificial intelligence, a new axis would replace human roles, seven designers chose to embrace the emergence of AI while continuing their individual path.",
+        categoryLabel: "Product Design",
+        upvote: "921"
+    },
+    {
+        userImgSrc : "image/desktop/users.png",
+        maker: "found / Found",
+        imgSrc: "image/desktop/image_3.png",
+        title: "KNOT Stool",
+        text: "found/Found collaborated with Groundot and designed furniture that could inject fresh and new senses into the space through the combination of wood and other materials. We combined wood and webbing straps wittily so that customers could choose a color combination. Webbing of various colors and textures brings out the variety of furniture and also features hardware functions that enhance the robustness of the stool",
+        categoryLabel: "Product Design",
+        upvote: "876"
+    },
+    {
+        userImgSrc : "image/desktop/users.png",
+        maker: "Pupupula Kids",
+        imgSrc: "image/desktop/image_4.png",
+        title: "Little One High Chair",
+        text: "In our understanding, children should be treated with no discrimination. It is therefore important that children of different ages should sit at the same height as adults.</p><p>Little Chairman sums up the experience accumulated by predecessors and integrates the efficient adjustable function into the recognizable inverted Y-shaped legs. It goes well with the design language of adult furniture. The seat and pedal can be easily adjusted with just one hand, allowing the chair to grow with the child's body.</p><p>The curved backrest and seat ensure that the child sits comfortably for a long time. The use of thick material of the legs improves the overall stability of the chair and guarantees children's safety.",
+        categoryLabel: "Product Design",
+        upvote: "854"
+    },
+    {
+        userImgSrc : "image/desktop/users.png",
+        maker: "found / Found",
+        imgSrc: "image/desktop/image_5.png",
+        title: "A Single Desk",
+        text: "A Single Desk is a single desk developed in collaboration with TAMKEN. It was designed to become an interior point by adding a colored iron screen to the small single-person desk. This screen is used as a note board and storage box while obscuring the user's view to focus.",
+        categoryLabel: "Product Design",
+        upvote: "9220"
+    },
+    {
+        userImgSrc : "image/desktop/users.png",
+        maker: "Caxa Estudio",
+        imgSrc: "image/desktop/image_6.png",
+        title: "Miuda",
+        text: "Introducing the new visual identity we created for Bar Miúda, located in downtown São Paulo. The logo we designed was inspired by the verticality of São Paulo and the establishment's concept of providing a free and open space for interaction, movement, and expression of its audience - something rare in the capital city. The spaces between the letters in the logo were intentionally left open to symbolize this idea.",
+        categoryLabel: "Graphic Design",
+        upvote: "92221"
+    },
+    {
+        userImgSrc : "image/desktop/users.png",
+        maker: "Sebastian Curi",
+        imgSrc: "image/desktop/image_7.png",
+        title: "New Illustration",
+        text: "These are some personal projects and various commissions I did over the last couple of months for Die Zeit Newspaper, Walla, Creative Mammals, Linderudlokka, DeGaulle Fleurance And Associes & GoodBuy Dietz.",
+        categoryLabel: "Graphic Design",
+        upvote: "92"
+    },
+    {
+        userImgSrc : "image/desktop/users.png",
+        maker: "Yonghoon Kim",
+        imgSrc: "image/desktop/image_8.png",
+        title: "Notitled Cosmetics",
+        text: "Notitled cosmetics project has focused on the aesthetic qualities of curved through the repeated twisted of curves. We have designed this liquid lipstick with the essence beauty of the most perfect curve and created it with motion graphics.",
+        categoryLabel: "Graphic Design",
+        upvote: "9221"
+    },
+    {
+        userImgSrc : "image/desktop/users.png",
+        maker: "Jerry-Lee Bosmans",
+        imgSrc: "image/desktop/image_9.png",
+        title: "Bungauli",
+        text: "Made with love by Sarah Beatrice. Bungauli embraces the enjoyment of everyday objects through weaving. A statement piece that decorates your day at home with joy. Something that is made with love and passion in every knot, blooms with your inner spark, and brightens the surroundings wherever Bungauli piece is there. Joyous Craftsmanship.",
+        categoryLabel: "Graphic Design",
+        upvote: "981"
+    },
+    {
+        userImgSrc : "image/desktop/users.png",
+        maker: "Jerry-Lee Bosmans",
+        imgSrc: "image/desktop/image_10.png",
+        title: "Printmaking Challenge V6",
+        text: "Printmaking",
+        categoryLabel: "Interior Design",
+        upvote: "98500"
+    },
+    {
+        userImgSrc : "image/desktop/users.png",
+        maker: "Povilas Grigas",
+        imgSrc: "image/desktop/image_11.png",
+        title: "Rainbow_Connection chair",
+        text: "A song titled the Rainbow Connection speaks about how magical things like rainbows can be viewed from a theoretical, scientific perspective, but also from a magical, mythical side. People once figured there must be something over the rainbow, that it's the gates of heaven or the throne of God.This idea of a gateway to another world is closely linked with meditation and how it takes you to a higher state of consciousness.",
+        categoryLabel: "Graphic Design",
+        upvote: "575"
+    },
+    {
+        userImgSrc : "image/desktop/users.png",
+        maker: "Radiance Crew",
+        imgSrc: "image/desktop/image_12.png",
+        title: "Urban Amenities - branding for modern furniture company",
+        text: "Introducing the new visual identity we created for Bar Miúda, located in downtown São Paulo. The logo we designed was inspired by the verticality of São Paulo and the establishment's concept of providing a free and open space for interaction, movement, and expression of its audience - something rare in the capital city. The spaces between the letters in the logo were intentionally left open to symbolize this idea.",
+        categoryLabel: "Graphic Design",
+        upvote: "922"
+    },
+    {
+        userImgSrc : "image/desktop/users.png",
+        maker: "Rondesignlab",
+        imgSrc: "image/desktop/image_13.png",
+        title: "GoodNotes - Branding & Mobile App Trial Period",
+        text: "Take beautiful, searchable collaborative notes with the note-taking app that turns your iphone into digital paper. See why GoodNotes is the Editors' choice",
+        categoryLabel: ["UI/UX", "Architecture", "Graphic Design"],
+        upvote: "92123"
+    },
+    // Add more card data objects as needed
+];
+
+
+
+
+    // Function to create and append a card to the container
+    // Function to create and append a card to the container
+    function createCard(cardData) {
+        const cardContainer = document.getElementById("card-container");
+
+        const card = document.createElement("div");
+        card.classList.add("card", "rounded-4", "card-hover");
+
+        const cardImg = document.createElement("img");
+        cardImg.classList.add("card-img-top", "rounded-top-4");
+        cardImg.src = cardData.imgSrc;
+        cardImg.alt = "Card image cap";
+
+        const cardBody = document.createElement("div");
+        cardBody.classList.add("card-body");
+
+        const cardAuthorImage = createElement("img", "card-image", null, cardData.userImgSrc);
+        const cardMaker = createElement("p", "card-text", cardData.maker);
+        const cardTitle = createElement("h5", "card-title", cardData.title);
+        const cardText = createElement("p", "card-text", cardData.text);
+
+        const buttonContainer = createButtonContainer(cardData.categoryLabel, cardData.upvote);
+
+        const cardAuthorImageContainer = document.createElement("div");
+        cardAuthorImageContainer.classList.add("card-author-container");
+
+        cardAuthorImageContainer.appendChild(cardAuthorImage);
+        cardAuthorImageContainer.appendChild(cardMaker);
+
+        cardBody.appendChild(cardAuthorImageContainer);
+        cardBody.appendChild(cardTitle);
+        cardBody.appendChild(cardText);
+        cardBody.appendChild(buttonContainer);
+        cardBody.innerHTML += createUpvoteRow(cardData.upvote);
+
+        card.addEventListener("click", function() {
+        window.location.href = "/feed";
+        });
+
+        card.appendChild(cardImg);
+        card.appendChild(cardBody);
+
+        cardContainer.appendChild(card);
+    }
+
+    function createButtonContainer(categoryLabels, upvote) {
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("btn-container");
+
+    if (Array.isArray(categoryLabels)) {
+        categoryLabels.forEach((label) => {
+            const categoryLabelClass = label.replace(/\s+/g, '_').toLowerCase();
+            const categoryButton = document.createElement("div");
+            if(categoryLabelClass === "ui/ux"){
+                categoryButton.innerHTML = `
+                    <button class="btn btn-dark rounded-5 position-relative mt-1">
+                        <div class="ps-4">${label}</div>
+                        <div class="circle_ui_ux"></div>
+                    </button>
+                `;
+            }else{
+                categoryButton.innerHTML = `
+                    <button class="btn btn-dark rounded-5 position-relative mt-1">
+                        <div class="ps-4">${label}</div>
+                        <div class="circle_${categoryLabelClass}"></div>
+                    </button>
+                `;
+            }
+            buttonContainer.appendChild(categoryButton);
+        });
+    } else if (categoryLabels === "UI/UX") {
+        buttonContainer.innerHTML = `
+            <div class="">
+                <button class="btn btn-dark rounded-5 position-relative mt-1">
+                    <div class="ps-4">${categoryLabels}</div>
+                    <div class="circle_ui_ux"></div>
+                </button>
+            </div>
+        `;
+    } else {
+        const categoryLabelClass = categoryLabels.replace(/\s+/g, '_').toLowerCase();
+        buttonContainer.innerHTML = `
+            <div class="">
+                <button class="btn btn-dark rounded-5 position-relative mt-1">
+                    <div class="ps-4">${categoryLabels}</div>
+                    <div class="circle_${categoryLabelClass}"></div>
+                </button>
+            </div>
+        `;
+    }
+
+    return buttonContainer;
+}
+
+function createUpvoteRow(upvote) {
+    return `
+        <div class="row">
+            <div class="col-1">
+                <img src="image/desktop/arrow_up.png" alt="">
+            </div>
+            <div class="col-3">
+                ${upvote}
+            </div>
+            <div class="col-5"></div>
+            <div class="col-1">
+                <img src="image/desktop/share.png" alt="">
+            </div>
+            <div class="col-1">
+                <img src="image/desktop/bookmark.png" alt="">
+            </div>
+        </div>
+    `;
+}
+
+function createElement(elementType, className, text, src) {
+    const element = document.createElement(elementType);
+    element.classList.add(className);
+
+    if (elementType === 'img' && src) {
+        element.src = src;
+    } else {
+        element.textContent = text;
+    }
+
+    return element;
+}
+
+
+
+
+
+    
+    cardData.forEach((data) => {createCard(data);});
+</script>
+
+<script>
+    // Function to handle button highlighting
+    // function handleButtonClick(event) {
+    //     const buttons = document.querySelectorAll('.highlight-button');
+
+    //     // Remove the 'btn-highlighted' class from all buttons
+    //     buttons.forEach((btn) => {
+    //         btn.classList.remove('btn-outline-highlighted');
+    //     });
+
+    //     // Add the 'btn-highlighted' class to the clicked button
+    //     event.target.classList.add('btn-outline-highlighted');
+    // }
+
+    // // Add a click event listener to each button
+    // const buttons = document.querySelectorAll('.highlight-outline-button');
+    // buttons.forEach((button) => {
+    //     button.addEventListener('click', (event) => {
+    //         handleButtonClick(event);
+    //     });
+    // });
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Add a click event handler for each button
+        $('.custom-btn').click(function() {
+            // Remove the 'custom-btn' class from all buttons
+            $('.custom-btn').removeClass('custom-btn');
+            // Add the 'custom-btn' class to the clicked button
+            $(this).addClass('custom-btn');
+        });
+    });
+</script>
+
+<%- include("partials/footer.ejs") %>

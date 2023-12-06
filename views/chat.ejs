@@ -1,0 +1,30 @@
+<%- include("partials/head.ejs") %>
+
+
+<body class="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 hide" style="background-color: #1536FF;">
+                <%- include("partials/sidebar.ejs") %>                  
+            </div>
+            <div class="col-9">
+                <div class="row mt-4">
+                    <div class="col-11">
+                        <%- include("partials/search_desktop.ejs") -%>
+                    </div>
+                    <div class="col-1">
+                        <a href="/user">
+                            <img src="image/desktop/user.png" alt="" class="user">
+                        </a>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+<%- include("partials/footer.ejs") %>

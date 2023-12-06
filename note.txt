@@ -1,0 +1,35 @@
+User:
+ - ID (Primary Key)
+ - Email
+ - FirstName
+ - Surname (optional)
+ - Password
+ - location: String
+ - about: String
+ - gmail: String
+ - phone: String
+ - instagram: String
+ - twitter: String
+ - experience: [
+    {
+        position: String,
+        company: String,
+        years: String,
+        description: String,
+    },
+  ],
+ - category: []
+ - Following
+ - Follower
+ - MyChannels
+ - profile_picture
+
+Community:
+ - title
+ - description
+ - maker
+ - total_member
+ - member with name
+ - details: []
+ - about
+ - profile_picture

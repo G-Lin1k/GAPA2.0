@@ -1,0 +1,94 @@
+<%- include("partials/head.ejs") %>
+
+<div class="container-fluid bg-white1 p-0">
+    <div class="row m-0 p-0">
+        <div class="container-fluid bg-white1 p-0">
+            <div class="row m-0 p-0">
+                <div class="col-md-6 m-0 p-0">
+                    <div class="container-fluid p-0">
+                        <img src="image/login/loginpage.png" alt="" class="img-fluid m-0 p-0" style="width: 560px;">
+                    </div>
+                </div>
+                <div class="col-md-6 mt-5 py-2 m-0 p-0 bg">
+                    <div class="container py-5">
+                    <div class="row d-flex align-items-center mt-5 pt-5">
+                        <div class="col text-center">
+                            <div class="container rounded-5 w-100">
+                                <p class="fw-bold">Log In</p>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="col text-center">
+                            <div class="container rounded-5 w-75">
+                                <a href="/create_account" class="text-black" style="text-decoration:none;"><p>Create Account</p></a>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                <div class="container d-flex align-items-center justify-content-center mb-3">
+                    <button class="btn btn-primary rounded-5 continue_google">
+                        <div class="row">
+                            <div class="col-md-3"><img src="/image/login/google.png"></div>
+                            <div class="col-md-7 fw-bold">Continue With Google</div>
+                        </div>
+                    </button>
+                </div>
+                <div class="container mt-3">
+                    <div class="row">
+                        <div class="col-5">
+                            <hr class="dashed-line">
+                        </div>
+                        <div class="col-2 text-center">Or</div>
+                        <div class="col-5">
+                            <hr class="dashed-line">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <form action="/login" method="post"> <!-- Assuming this is a login form -->
+                        <div class="form-floating mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend bg-accent2 d-flex align-items-center justify-content-center ps-2 pe-2 rounded-left btrr_bbrr btlr_bblr_image">
+                                    <img src="/image/login/email.png" alt="" class="img-fluid p-1">
+                                </div>
+                                <input type="email" class="form-control bg-accent2" id="floatingInput" name="email" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-floating">
+                            <div class="input-group">
+                                <div class="input-group-prepend bg-accent2 d-flex align-items-center justify-content-center ps-2 pe-2 rounded-left btrr_bbrr btlr_bblr_image">
+                                    <img src="image/login/lock.png" alt="" class="img-fluid p-1">
+                                </div>
+                                <input type="password" class="form-control bg-accent2" id="floatingPassword" name="password" placeholder="Password">
+                            </div>
+                        </div>
+
+                        <!-- Add captcha input field -->
+                        <div class="form-floating mt-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend bg-accent2 d-flex align-items-center justify-content-center ps-2 pe-2 rounded-left btrr_bbrr btlr_bblr_image">
+                                    <img src="/image/login/lock.png" alt="" class="img-fluid p-1"> <!-- Adjust the path to your captcha image -->
+                                </div>
+                                <input type="text" class="form-control bg-accent2" id="captcha" name="captcha" placeholder="Enter Captcha">
+                            </div>
+                        </div>
+
+                        <!-- Display captcha image -->
+                        <div class="container d-flex align-items-center justify-content-center mt-3">
+                            <img src="/captcha" alt="Captcha Image"> <!-- Fetch captcha image from the /captcha route -->
+                        </div>
+
+                        <div class="d-flex mt-3 justify-content-center align-items-center">
+                            <a href="/manage">
+                                <button type="submit" class="btn btn-primary rounded-pill bg-blue" style="width: 200px;">Log In GAPA* Account</button>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div class="container d-flex align-items-center justify-content-center mt-3">
+                    <a href="" class="font-accent3">Forgot password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

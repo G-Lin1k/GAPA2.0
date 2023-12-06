@@ -1,0 +1,125 @@
+<%- include("partials/head.ejs") %>
+
+<div class="container-fluid m-0 p-0 ">
+    <h1 class="text-center pt-5">Manage Your Preferences</h1>
+    <h2 class="text-center mb-5" style="color:#777777">Choose the topics you want in your feed!</h2>
+
+
+    <%- (include("partials/search.ejs")) -%>
+
+    <div class="container-fluid">
+        <div class="container-fluid justify-content-center align-items-center d-flex text-center">
+            <div id="checkbox-container" class="btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-warning rounded-4 mx-2 my-2" id="architecture-label">
+                    <input type="checkbox" autocomplete="off"> Architecture
+                </label>
+                <label class="btn btn-warning rounded-4 mx-2 my-2" id="product-design-label">
+                    <input type="checkbox" autocomplete="off"> Product Design
+                </label>
+                <label class="btn btn-warning rounded-4 mx-2 my-2" id="interior-design-label">
+                    <input type="checkbox" autocomplete="off"> Interior Design
+                </label>
+                <label class="btn btn-warning rounded-4 mx-2 my-2" id="fashion-design-label">
+                    <input type="checkbox" autocomplete="off"> Fashion Design
+                </label>
+                <label class="btn btn-warning rounded-4 mx-2 my-2" id="ui-ux-label">
+                    <input type="checkbox" autocomplete="off"> UI/UX
+                </label>
+            </div>
+        </div>
+
+        <div class="container-fluid justify-content-center align-items-center d-flex text-center">
+            <div id="checkbox-container" class="btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-warning rounded-4 mx-2 my-2" id="animation-label">
+                    <input type="checkbox" autocomplete="off"> Animation
+                </label>
+                <label class="btn btn-warning rounded-4 mx-2 my-2" id="illustration-label">
+                    <input type="checkbox" autocomplete="off"> Illustration
+                </label>
+                <label class="btn btn-warning rounded-4 mx-2 my-2" id="film-label">
+                    <input type="checkbox" autocomplete="off"> Film
+                </label>
+                <label class="btn btn-warning rounded-4 mx-2 my-2" id="advertising-label">
+                    <input type="checkbox" autocomplete="off"> Advertising
+                </label>
+                <label class="btn btn-warning rounded-4 mx-2 my-2" id="branding-label">
+                    <input type="checkbox" autocomplete="off"> Branding
+                </label>
+                <label class="btn btn-warning rounded-4 mx-2 my-2" id="graphic-design-label">
+                    <input type="checkbox" autocomplete="off"> Graphic Design
+                </label>
+            </div>  
+        </div>
+    </div>
+
+    <div class="container-fluid justify-content-end align-items-center d-flex mt-5 p-5">
+        <a href="/" style="text-decoration: none;"><button class="btn btn-primary rounded-4">Generate Feed</button></a>
+    </div>
+    <div class="container-fluid justify-content-end align-items-center d-flex mt-5 p-5">
+        <a href="/sidebar?categories=<%= encodeURIComponent(selectedCategories.join(',')) %>" style="text-decoration: none;">
+            <button class="btn btn-primary rounded-4">Generate Feed</button>
+        </a>
+    </div>
+
+</div>
+  
+<script>
+    const checkboxLabelStyles = {
+            activeBackgroundColor: "#1536FF",
+            checkedBackgroundColor: "#1536FF",
+            textColor: "#FFFFFF"
+        };
+
+        const labelIds = [
+            "architecture-label",
+            "product-design-label",
+            "interior-design-label",
+            "fashion-design-label",
+            "ui-ux-label",
+            "animation-label",
+            "illustration-label",
+            "film-label",
+            "advertising-label",
+            "branding-label",
+            "illustration-label",
+            "graphic-design-label"
+        ];
+
+        labelIds.forEach((labelId) => {
+            const label = document.getElementById(labelId);
+            const checkbox = label.querySelector("input[type=checkbox]");
+
+            label.addEventListener("click", () => {
+                label.classList.toggle("active");
+                if (label.classList.contains("active")) {
+                    label.style.backgroundColor = checkboxLabelStyles.activeBackgroundColor;
+                    label.style.color = checkboxLabelStyles.textColor;
+                } else {
+                    label.style.backgroundColor = checkbox.checked ? checkboxLabelStyles.checkedBackgroundColor : "";
+                    label.style.color = checkboxLabelStyles.textColor;
+                }
+            });
+
+            checkbox.addEventListener("change", () => {
+                if (checkbox.checked) {
+                    label.style.backgroundColor = checkboxLabelStyles.checkedBackgroundColor;
+                } else {
+                    label.style.backgroundColor = label.classList.contains("active") ? checkboxLabelStyles.activeBackgroundColor : "";
+                }
+            });
+        });
+
+    function getSelectedCategories() {
+        const selectedCategories = [];
+        labelIds.forEach((labelId) => {
+            const label = document.getElementById(labelId);
+            const checkbox = label.querySelector("input[type=checkbox]");
+
+            if (checkbox.checked) {
+                selectedCategories.push(label.textContent.trim());
+            }
+        });
+        return selectedCategories;
+    }
+    document.getElementById("generateFeedLink").addEventListener("click", generateFeedURL);
+</script>
