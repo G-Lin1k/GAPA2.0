@@ -1,0 +1,186 @@
+:root {
+    --blue: #1536FF;
+    --accent1: #EAFE87;
+    --accent2: #D9D9D9;
+    --accent3: #777777;
+    --accent4: #333333;
+    --white: #F3F4FB;
+    --white2: #FFFFFF;
+    --white3: #A2A2A2;
+    --yellowish-green: #C5C772;
+
+    --main-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --second-font: 'Suisse Intl', sans-serif;
+}
+
+/* Webkit ScrollBar */
+/* Change the width of the scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    margin-left: 5px;
+}
+
+/* Change the color of the scrollbar */
+::-webkit-scrollbar-thumb {
+    background: var(--accent3);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+/* Change the background color of the track (the area behind the thumb) */
+::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+/* Font */
+/* Define and load Helvetica Neue */
+@font-face {
+    font-family: 'Helvetica Neue';
+    src: local('Helvetica Neue'), local('HelveticaNeue'), url('/public/font/Helvetica\ Neue\ LT/') format('opentype');
+    /* Add additional font formats if needed */
+}
+
+/* Define and load Suisse Int'l */
+@font-face {
+    font-family: 'Suisse Intl';
+    src: local('Suisse Int\'l'), local('SuisseIntl'), url('/public/font/Suisse\ Int\'l\ UltraLight/') format('opentype');
+    /* Add additional font formats if needed */
+}
+
+body{
+    margin: 0;
+    padding: auto;
+    background-color: var(--white);
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* All Background Color */
+.bg-blue {
+    background-color: var(--blue);
+}
+
+.bg-accent1 {
+    background-color: var(--accent1);
+}
+
+.bg-accent2 {
+    background-color: var(--accent2);
+}
+
+.bg-accent3 {
+    background-color: var(--accent3);
+}
+
+.bg-accent4 {
+    background-color: var(--accent4);
+}
+
+/* Fix the typos in class names */
+.bg-white {
+    background-color: var(--white);
+}
+
+.bg-white2 {
+    background-color: var(--white2);
+}
+
+.bg-white3 {
+    background-color: var(--white3);
+}
+
+.bg-yellowish-green {
+    background-color: var(--yellowish-green);
+}
+
+/* All Color*/
+.font-blue {
+    color: var(--blue);
+}
+
+.font-accent1 {
+    color: var(--accent1);
+}
+
+.font-accent2 {
+    color: var(--accent2);
+}
+
+.font-accent3 {
+    color: var(--accent3);
+}
+
+.font-accent4 {
+    color: var(--accent4);
+}
+
+.font-white {
+    color: var(--white);
+}
+
+.font-white2 {
+    color: var(--white2);
+}
+
+.font-white3 {
+    color: var(--white3);
+}
+
+.font-yellow {
+    color: var(--yellow);
+}
+
+/*Components */
+nav{
+    background-color: var(--blue);
+}
+
+.btn-login{
+    color: var(--white);
+    font-weight: bold;
+}
+
+.btn-login:hover{
+    color: var(--white3);
+}
+
+.btn-signup{
+    background-color: var(--accent1);
+    color: var(--accent4);
+    font-weight: bold;
+}
+
+.btn-signup:hover{
+    background-color: var(--yellowish-green);
+}
+
+.btrr_bbrr {
+    border-radius: 0 30px 30px 0;
+}
+
+.btlr_bblr {
+    border-radius: 30px 0 0 30px;
+}
+
+.btlr_bblr_image {
+    border-radius: 10px 0 0 10px;
+}
+
+@media (max-width: 767px) {
+    .btrr_bbrr,
+    .btlr_bblr {
+        border-radius: 30px;
+        margin-bottom: 10px;    
+    };
+    .btn-signup,
+    .btn-login{
+        margin: 0px;
+        padding: 0px;
+    };
+}
+
+.continue_google{
+    background-color: var(--white2);
+    color: black;
+    width: 75%;
+}
+

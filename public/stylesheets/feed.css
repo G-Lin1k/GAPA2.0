@@ -1,0 +1,117 @@
+body {
+    background: aliceblue;
+}
+h1 {
+    color: black;
+    padding: 10px 0;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border: none;
+    &:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+    }
+    a {
+            color: initial;
+            &:hover {
+            text-decoration: initial;
+        }
+    }
+    .text-muted i {
+        margin: 0 10px;
+    }
+}
+hr{
+    height: 5px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.circle_graphic_design {
+    width: 20px; /* Adjust the size as needed */
+    height: 20px; /* Adjust the size as needed */
+    border-radius: 50%; /* Makes it a circle */
+    background-color: #FF4C00; /* Background color of the circle */
+    position: absolute;
+    top: 50%;
+    right: 0px; /* Adjust the position as needed */
+    left: 10px;
+    transform: translateY(-50%);
+}
+.circle_ui_ux {
+    width: 20px; /* Adjust the size as needed */
+    height: 20px; /* Adjust the size as needed */
+    border-radius: 50%; /* Makes it a circle */
+    background-color: #6100FF; /* Background color of the circle */
+    position: absolute;
+    top: 50%;
+    right: 0px; /* Adjust the position as needed */
+    left: 10px;
+    transform: translateY(-50%);
+}
+.circle_product_design {
+    width: 20px; /* Adjust the size as needed */
+    height: 20px; /* Adjust the size as needed */
+    border-radius: 50%; /* Makes it a circle */
+    background-color: #FDFF8F; /* Background color of the circle */
+    position: absolute;
+    top: 50%;
+    right: 0px; /* Adjust the position as needed */
+    left: 10px;
+    transform: translateY(-50%);
+}
+.circle_architecture {
+    width: 20px; /* Adjust the size as needed */
+    height: 20px; /* Adjust the size as needed */
+    border-radius: 50%; /* Makes it a circle */
+    background-color: #319F43; /* Background color of the circle */
+    position: absolute;
+    top: 50%;
+    right: 0px; /* Adjust the position as needed */
+    left: 10px;
+    transform: translateY(-50%);
+}
+.circle_interior_design {
+    width: 20px; /* Adjust the size as needed */
+    height: 20px; /* Adjust the size as needed */
+    border-radius: 50%; /* Makes it a circle */
+    background-color: #587DBD; /* Background color of the circle */
+    position: absolute;
+    top: 50%;
+    right: 0px; /* Adjust the position as needed */
+    left: 10px;
+    transform: translateY(-50%);
+}
+.user:hover{
+    opacity: 0.8;
+}
+.card-hover {
+    transition: opacity 2s ease; /* Add a smooth transition effect */
+}
+
+.card-hover:hover {
+    opacity: 0.8; /* Reduce opacity on hover */
+}
+
+.circle_online {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #319F43;
+    position: absolute;
+    top: 50%;
+    left: 50%; /* Set left to 50% to horizontally center the circle */
+    transform: translate(-50%, -50%); /* Center horizontally and vertically */
+}
+
+.circle_offline {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #777777;
+    position: absolute;
+    top: 50%;
+    left: 50%; /* Set left to 50% to horizontally center the circle */
+    transform: translate(-50%, -50%); /* Center horizontally and vertically */
+}
